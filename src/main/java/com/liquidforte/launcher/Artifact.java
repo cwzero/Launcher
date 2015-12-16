@@ -1,7 +1,7 @@
 package com.liquidforte.launcher;
 
 public class Artifact {
-	private String organisation = "";
+	private String organization = "";
 	private String module = "";
 	private String version = "";
 
@@ -9,19 +9,19 @@ public class Artifact {
 		super();
 	}
 
-	public Artifact(String organisation, String module, String version) {
+	public Artifact(String organization, String module, String version) {
 		this();
-		this.organisation = organisation;
+		this.organization = organization;
 		this.module = module;
 		this.version = version;
 	}
 
-	public String getOrganisation() {
-		return organisation;
+	public String getOrganization() {
+		return organization;
 	}
 
-	public void setOrganisation(String organisation) {
-		this.organisation = organisation;
+	public void setOrganization(String organization) {
+		this.organization = organization;
 	}
 
 	public String getModule() {

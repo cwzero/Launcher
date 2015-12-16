@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.liquidforte.launcher.bootstrap.Bootstrap;
-import com.liquidforte.launcher.ivy.IvyInvoker;
+import com.liquidforte.launcher.ivy.MultiInvoker;
 
 public class Launcher {
 	public static void main(String[] args) {
@@ -35,11 +38,12 @@ public class Launcher {
 	}
 	
 	public static void launch(LaunchDescriptor descriptor) {
-		IvyInvoker invoker = new IvyInvoker(descriptor.getRepositories());
+		MultiInvoker invoker = new MultiInvoker(descriptor.getRepositories());
 		invoker.invoke(descriptor.getArtifacts());
 		
 		String classpath = invoker.getClasspath();
-		String[] command = {"java", "-cp", classpath, descriptor.getMainClass()};
+		List<String> command = new ArrayList<String>(Arrays.asList("java", "-cp", classpath, descriptor.getMainClass()));
+		command.addAll(Arrays.asList(descriptor.getArguments()));
 		
 		ProcessBuilder builder = new ProcessBuilder(command);
 		builder.inheritIO();

@@ -4,11 +4,21 @@ public class LaunchDescriptor {
 	private Repository[] repositories;
 	private Artifact[] artifacts;
 	private String mainClass;
+	private String[] arguments;
 
-	public LaunchDescriptor(Repository[] repositories, Artifact[] artifacts, String mainClass) {
+	public LaunchDescriptor(Repository[] repositories, Artifact[] artifacts, String mainClass, String[] arguments) {
 		this.repositories = repositories;
 		this.artifacts = artifacts;
 		this.mainClass = mainClass;
+		this.arguments = arguments;
+	}
+
+	public String[] getArguments() {
+		return arguments;
+	}
+
+	public void setArguments(String[] arguments) {
+		this.arguments = arguments;
 	}
 
 	public Repository[] getRepositories() {

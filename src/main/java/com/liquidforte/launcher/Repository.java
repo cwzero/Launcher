@@ -41,6 +41,7 @@ public class Repository {
 		if (resolver == null) {
 			resolver = new IBiblioResolver();
 			resolver.setM2compatible(true);
+			resolver.setName(name);
 			resolver.setRoot(url);
 		}
 		return resolver;
